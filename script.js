@@ -1,4 +1,3 @@
-// 共通
 const prefectures = [
 "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
 "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
@@ -10,7 +9,7 @@ const prefectures = [
 "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"
 ];
 
-// index.html用
+// -------- index.html 用 --------
 if(document.getElementById("buttons")){
 let visited = JSON.parse(localStorage.getItem("visited")) || [];
 let remaining = JSON.parse(localStorage.getItem("remaining")) || [...prefectures];
@@ -72,7 +71,7 @@ function goRecord(){ window.location.href="kiroku.html"; }
 function resetTravel(){
     if(!confirm("本当にリセットしますか？")) return;
     visited=[]; remaining=[...prefectures]; current=null;
-    localStorage.removeItem("visited"); localStorage.removeItem("remaining");
+    localStorage.removeItem("visited"); localStorage.removeItem("remaining"); localStorage.removeItem("photos");
     document.getElementById("result").textContent="次の行き先はココ‼";
     updateVisitedList();
     mode="home";
@@ -83,7 +82,7 @@ renderButtons();
 updateVisitedList();
 }
 
-// kiroku.html用
+// -------- kiroku.html 用 --------
 if(document.getElementById("japan-map")){
 let visited = JSON.parse(localStorage.getItem("visited")) || [];
 let photos = JSON.parse(localStorage.getItem("photos")) || {};
@@ -144,3 +143,4 @@ function loadPhotos(prefId){
         container.appendChild(img);
     });
 }
+
